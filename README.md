@@ -7,7 +7,7 @@
         padding:0;
         margin:0;
       }
-      .layout articla div{
+      .layout article div{
          min-height:100px;
       }
       .layout.float .left{
@@ -25,13 +25,13 @@
       }
      </style>
      <section class="layout float">
-        <artical class="left-right-center">
+        <article class="left-right-center">
           <div class="left"></div>
           <div class="right"></div>
           <div class="center">
             <h1>dfdfd</h1>
           </div>
-        </artical>
+        </article>
      </section>
      //绝对布局
      <style>
@@ -39,7 +39,7 @@
         padding:0;
         margin:0;
       }
-      .layout articaldiv{
+      .layout article div{
          min-height:100px;
          position:absoluete;
       }
@@ -60,11 +60,119 @@
       }
      </style>
      <section class="layout absolute">
-        <artical class="left-right-center">
+        <article class="left-right-center">
           <div class="left"></div>
           <div class="right"></div>
           <div class="center">
             <h1>dfdfd</h1>
           </div>
-        </artical>
+        </article>
      </section>
+     //flex布局
+        <style>
+        html *{
+          padding:0;
+          margin:0;
+        }
+        .layout article div{
+           min-height:100px;
+        }
+        .layout article{
+          display:flex;
+        }
+        .layout.flex .left{
+           left:0;
+           width:300px;
+           background:red;
+        }
+        .layout.flex .right{
+           right:300px;
+           width:300px;
+           background:blue;
+        }
+        .layout.flex .center{ 
+           flex:1;
+           background:yellow;
+        }
+      </style>
+         <section class="layout flex">
+          <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+              <h1>dfdfd</h1>
+            </div>
+            <div class="right"></div>
+          </article>
+       </section>
+       //table布局
+        <style>
+        html *{
+          padding:0;
+          margin:0;
+        }
+        .layout article div{
+           min-height:100px;
+           display:table-cell
+        }
+        .layout article{
+          display:table;
+        }
+        .layout.table .left{
+           width:300px;
+           background:red;
+        }
+        .layout.table .right{
+           width:300px;
+           background:blue;
+        }
+        .layout.table .center{
+           background:yellow;
+        }
+      </style>
+         </style>
+         <section class="layout table">
+          <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+              <h1>dfdfd</h1>
+            </div>
+            <div class="right"></div>
+          </article>
+       </section>
+       //网格布局
+           <style>
+        html *{
+          padding:0;
+          margin:0;
+        }
+        .layout article div{
+           min-height:100px;
+           display:table-cell
+        }
+        .layout article{
+          display:grid;
+          width: 100%;
+          grid-template-rows: 100px;
+          grid-template-columns: 300px auto 300px;
+        }
+        .layout.grid .left{
+           width:300px;
+           background:red;
+           width:300px;
+        }
+        .layout.grid .right{
+           background:blue;
+        }
+        .layout.grid .center{
+           background:yellow;
+        }
+      </style>
+       <section class="layout grid">
+          <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+              <h1>dfdfd</h1>
+            </div>
+            <div class="right"></div>
+          </article>
+       </section>
