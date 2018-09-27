@@ -176,3 +176,35 @@
             <div class="right"></div>
           </article>
        </section>
+### 盒模型
+#### 基本概念：标准模型+IE模型
+### 标准模型和IE模型的区别
+### css如何设置这两种模型 
+    box-sizing:content-box;
+    box-sizing:border-box;
+### js如何设置获取获取盒模型对应的宽和高
+     dom.style.width/height
+     dom.currentStyle.width/height
+     window.getComputedStyle(dom).width/height 
+     dom.getBoundingClientRect().width/height 
+### 实例题（根据盒模型解释边距重叠）
+      
+### BFC(边距重叠解决方案)
+    BFC的基本概念
+      块级格式化上下文
+    BFC的原理
+    BFC的渲染规则
+    1BFC的垂直方向上边距不会发生重叠
+    2BFC的区域不会于浮动元素发生重叠
+    3BFC他是一个独立的容器
+    4计算BFC子元素即使float也会参与高度运算 
+    如何创建BFC
+    1.float值不为none
+    2.position值不是static或者relative
+    3.display
+    4.overflow 
+    BFC使用场景
+    float布局
+    清除浮动 外层包住浮动元素，看不到父元素
+    
+     
