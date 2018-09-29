@@ -304,3 +304,154 @@
       http/1.1要求服务端支持管线化，但并不要求服务器端也对响应进行对于管线化的请求
       管线化处理，只要求不失败即可
       由于上面提到的服务器端问题，开启管线化很可能并不会带来大幅度的性能提升，并且很多服务器和代理程序对管线化的支持并不好，因此现代浏览器如chrome和firefox默认并为开启管线化支持
+### 原型链类
+#### 创建对象有几种方法
+     var o1={name:'o1'}
+     var o11=new Object({name:'o11'})
+     var M=function(){this.name='o2'}
+     var o2=new M();
+     var P={name:'o3'}
+     var o3=Object.create(p) 
+### 原型、构造函数、实例、原型链 
+     
+#### instanceof的原理
+#### new 运算符  
+     一个新的对象被创建。它继承自foo.protype构造函数foo被执行。执行的时候，相应的传参会被传入，同时上下文（this）
+     会被指定为这个新实例。new foo等同于new foo（），只能用在不传递任何参数的情况如果构造函数反悔了一个“对象”，那么这个
+     会取代整个new出来的结果。如果构造函数没有返回对象，那么new出来的结果为步骤1创建的对象 
+### 面向对象
+#### 类与实例
+     类的声明
+      function Animal(){
+        this.name ='name'
+      }
+      es6
+      class Animal2(){
+        constructor(){
+           this.name=name; 
+        }
+      }v
+     var new1=new Animal();
+     var new2= new Animal() 
+#### 类的继承
+     如何实现继承
+     //借助构造函数实现继承
+     function Parent1(){
+       this.name="parent1";
+     }
+     function Child1(){
+       Parent.call(this);//apply
+       this.type='child1';
+     }
+     //这种继承方法不能继承父级原型上方法
+     //借助原型链实现继承
+     funtion Parent2(){
+       this.name="parent2
+     }
+     function child2(){
+       this.typ2='child2';
+     }
+     Child2.prototype=new Parent2();
+     //这种方式会让他们公用同一个父级，父级上面的值是引用改变子级的某一个值另一个子级的值也会改变
+     //组合方式
+     function Parent3(){
+       this.name='parent3'
+     }
+     function Child3(){
+        Parent3call(this);
+        this.typ2='child3;
+     }
+      Child3.prototype=new Parent3(); 
+      var s3=new Child3();
+      var s4=new Child3();
+      //组合优化1
+      function Parent4 (){
+       this.name='parent4'
+     }
+     function Child4(){
+        Parent4call(this);
+        this.typ2='child3;
+     }
+      Child4.prototype=Parent4.prototype;
+      var s3=new Child4();
+      var s4=new Child4();
+      //组合优化2
+      function Parent4 (){
+       this.name='parent4' 
+     }
+     function Child4(){
+        Parent4call(this);
+        this.typ2='child3;
+     }
+      Child4.prototype=Object.create(Parent4.prototype)
+      Child4.prototype.constructor=Child4
+      var s3=new Child4();
+      var s4=new Child4();
+      //这种方式缺点是 父类的构造函数执行了2次  
+     继承的几种方式
+### 通信类
+#### 什么是同源策略及限制
+     同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。
+     这是一个用于隔离潜在恶意文件的关键的安全机制
+     
+     cookie\localStorage和indexDB无法读取
+     DOM无法获得
+     Ajax请求不能发送
+#### 前后端如何通信
+     ajax
+     websocket
+     cors
+#### 如何创建ajax
+     XMLhttprequest对象的工作流程
+     兼容性处理
+     事件的触发条件
+     事件的触发顺序
+     util.json=function(options){
+         var opt = {
+           url: '',
+           type: 'get',
+           data:{},
+           success:function(){},
+           error:function(){}
+         }
+         util.extend(opt,options);
+         if(opt.url){
+           var xhr = XMLHttpRequest? new XMLHttpRequest():new window.ActiveXObject('')
+           var data = opt.data,
+               utl = opt.url,
+           type = opt.type.toUpperCase(),
+           dataArr=[];
+           for(var k in data){
+             dataArr.push(k+'='+data[k]);
+           }
+           if(type==='GET'){
+             url = url+'?'+dataArr.join('&');
+             xhr.open(type,url.replace(/\?$/g,''),true;
+             xhr.send();
+           }
+           if(type === 'POST'){
+             xhr.open(type,url,true);
+             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+             xhr.send(dataArr.join('&');
+           }
+           xhr.onload=function(){
+             if(xhr.status===200||xhr.status===304){
+               var res;
+               if(opt.success&&opt.success instanceof Funtion){
+                  res =JSON.parse(res);
+                  opt.success.call(xhr,res);
+               }
+             }else{
+               if(opt.error&&opt.error instanceof Function){
+                 opt.error.call()xhr.res
+               }
+             }
+           }
+         }
+      }
+#### 跨域通信的几种方式
+     JSONP
+     Hash
+     postMessage
+     websocket
+     CORS
