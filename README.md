@@ -369,12 +369,13 @@
        this.name='parent4'
      }
      function Child4(){
-        Parent4call(this);
+        Parent4.call(this);
         this.typ2='child3;
      }
       Child4.prototype=Parent4.prototype;
       var s3=new Child4();
       var s4=new Child4();
+      //这种方式缺点是 父类的构造函数执行了2次  
       //组合优化2
       function Parent4 (){
        this.name='parent4' 
@@ -387,7 +388,6 @@
       Child4.prototype.constructor=Child4
       var s3=new Child4();
       var s4=new Child4();
-      //这种方式缺点是 父类的构造函数执行了2次  
      继承的几种方式
 ### 通信类
 #### 什么是同源策略及限制
@@ -455,3 +455,17 @@
      postMessage
      websocket
      CORS
+### 安全类
+#### CSRF
+     基本概念和缩写
+     CSRF,通常称为跨站请求伪造，英文名Cross-site request forgery
+     攻击原理
+     用户登陆A网站下发cookie，如果B网站引诱你点击A网站某个链接的操作看到cookie就会执行这个操作
+     防御措施
+     token验证
+     referer验证 观看这个链接的来源
+     隐藏令牌   和token差不多只不过把数据写在head上
+     
+#### XSS
+     基本概念和缩写
+     xss cross-site scripting 跨站脚本攻击
