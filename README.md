@@ -469,3 +469,77 @@
 #### XSS
      基本概念和缩写
      xss cross-site scripting 跨站脚本攻击
+### 渲染机制
+#### 什么是DOCTYPE及作用
+      DTD（document type definition 文档类型定义）是一系列的语言规则，用来定义xml或html的文档类型。浏览器会使用他来判断文档类型，决定使用何种协议来解析，以及切换浏览器模式
+      DOCTYPE是用来声明文档类型和DTD规范的，一个主要的用途便是文件的合法性验证。如果文件代码不合法，那么浏览器便会出一些差错
+#### 浏览器渲染过程
+      html经过html parser转换成DOM tree ,style sheets->css parser-> style rules,让后DOM tree和style rules相结合
+      attachment->render tree但他不能计算元素在哪个位置通过layout完成最后绘画让后显示
+      
+#### 重排reflow
+     定义 DOM结构中的各个元素都是自己的盒子（模型），这些都需要浏览器根据各种样式来计算并根据计算结果将元素放到它该出现的位置，这个过程称之为reflow
+     触发reflow
+     当你增加、删除、修改DOM结点时，会导致reflow或repaint
+     当你移动DOM的位置，或者搞个动画的时候
+     当你修改css样式的时候
+     当你resize窗口的时候，或是滚动的时候
+     当你修改网页的默认字体时
+#### 重绘repaint
+     定义 当各种盒子的位置、大小以及其他属性，流入颜色、字体大小等都确定下来后，浏览器于是便把这些元素都按照个子的特性绘制了一遍，于是页面的内容出现了，这个过程称之为repaint
+     触发repaint
+     DOM改动
+     css改动
+#### 布局layout
+### 运行机制类
+    console.log(1);
+    setTimeout(function(){
+     console.log(2);
+    },0)
+    console.log(3);
+    答案是 1 3 2 因为js是单线程 js的运行队列先走同步任务后走异步任务。所以当遇到setTimeout异步任务时先挂起，把后面的同步任务完成最后才走setTimeout
+#### 如何理解JS的单线程
+     一个时间之内只能执行一个任务
+     什么是任务队列
+     同步任务和异步任务，异步放入时间和执行时间
+     setTimeout(function(){},1000);
+     他首先是执行到这个语句先挂起让后等同步任务完成并1000ms到了之后放入异步任务队列执行
+     什么是Event Loop
+### 页面性能类
+#### 题目：提升页面性能的方法有哪些
+     资源压缩合并，减少HTTP请求
+     非核心代码异步加载->异步加载的方式   1动态加载脚本 2 defer 3 async  ->异步加载的区别 defer是在html解析完之后才会执行，如果是多个，按照加载的顺序一次执行 async是在加载玩之后立即执行，如果是多个，执行顺序和加载顺序无关
+     
+     利用浏览器缓存->缓存的分类->缓存的原理
+     缓存的分类
+       强缓存
+       EXpires Expires：Thu，21 jan 2017 23：39：02 GMT
+       Cache-Control Cache-Control:max-age=3600
+       协商缓存
+       last-Modified if-Modified-Since last-Modified：web，26 jan 2017 00：35：11 GMT
+       Etag if-None-Match
+     使用CDN
+     预解析DNS
+     <meta http-equiv="x-dns-prefetch-control" content="on">
+     这个是在https下强制打开a标签链接的与解析因为https下会关闭DNS与解析
+     <link rel="dns-prefetch" href="//host_name_to_prefetch.com">
+     打开a标签预解析
+### 错误监控类
+    前端错误的分类
+    即使运行错误：代码错误
+    资源加载错误
+    错误的捕获方式
+    try..catch window.onerror
+    资源加载错误
+    object.onerror perormance.getEntries() error事件捕获
+    延申：跨域的js运行错误可以捕获吗。错误提示什么，应该怎么处理
+    1、在script标签增加crossorigin
+    2、设置js资源响应头Access-Control-Allow-Origin:*;
+    
+    
+    上报错误的原理
+    采用ajax通信的方式上报
+    利用Image对象上报
+    <script>
+     (new Image()).src="http://baidu.com/tesjk?r=tksjk"
+    </script>
