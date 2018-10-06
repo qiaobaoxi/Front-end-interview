@@ -155,7 +155,7 @@
           grid-template-rows: 100px;
           grid-template-columns: 300px auto 300px;
         }
-        .layout.grid .left{
+        .layout.grid .left{ 
            width:300px;
            background:red;
            width:300px;
@@ -548,8 +548,43 @@
  ### 如何对待接下来遇到的面试题？->题目到知识再到题目 
  #### js中使用typeof能得到的哪些类型 
       考点：js变量类型
+      typeof undefined //undefined
+      typeof 'abc' // string
+      typeof 123 //number
+      typeof true //boolean
+      typeof {} //object
+      typeof [] //object
+      typeof null //object
+      typeof console.log() //function
  #### 何时使用=== 何时使用==？
       考点：强制类型转换
+      字符串拼接
+      var a=100+'10' //'10010'
+      var a=100+10 //110
+      == 运算符 
+      100 =='100' //true
+      0==''  //true
+      null == undefined //true
+      if语句
+      var a=true
+      if(a){
+      }
+      var b=100;
+      if(b){
+      }
+      var c=''
+      if(c){
+      }
+      逻辑运算
+      console.log(10&&0)//0
+      console.log(''||abc)//'abc'
+      console.log(!window.abc)//true
+      
+      
+      if(obj.a===null){
+        //这里相当于obj.a===null||obj.a===undefined
+        //这是jquery源码推荐的写法
+      } 
  #### window.onload和DOMContentLoaded的区别？
       考点：浏览器渲染过程
  #### 用js创建10个<a>标签,点击的时候弹出来对应的序号
@@ -559,5 +594,35 @@
  #### 实现数组的随机排序
       考点：js基础算法
  #### js中有哪些内置函数
+      Object
+      Array
+      Boolean
+      Number
+      String
+      Function
+      Date
+      RegExp
+      Error
+     
  #### js变量按照存储方式区分有哪些类型，并描述其特点
- #### 如何理解JSON    
+      //值类型和引用类型
+      //值类型需要好几个地方存储东西
+      //引用类型可以共同用一个存储空间
+ #### 如何理解JSON  
+      JSON.stringify({a:20,b:21})
+      JSON.parse('{a:10,b:20}')
+ #### 变量类型
+      值类型VS引用类型
+      //值类型
+      var a=100；
+      var b=a;
+      a=200
+      console.log(b)//b=100
+      //引用类型
+      var a={
+        age:20
+      }
+      var b=a
+      b.age=21
+      console.log(a.age)//a.age=21
+      引用类型是对象，数组和函数  
