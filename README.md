@@ -626,3 +626,20 @@
       b.age=21
       console.log(a.age)//a.age=21
       引用类型是对象，数组和函数  
+#### 如何准确判断一个变量是数组类型
+#### 写一个原型链继承的列子
+#### 描述new一个对象的过程
+#### zepto源码中如何使用原型链
+### 构造函数
+    function Foo(name,age){
+      this.name=name;
+      this.age=age;
+      this.class='class1';
+    } 
+    var f= new Foo('张三',20)
+### 构造函数.扩展
+    var a={} 其实是var a=new Object()的语法糖
+    var a=[] 其实是var a=new Array()的语法糖
+    function Foo(){}其实是var Foo=new Fuction()
+    使用instanceof判断一个函数是否是一个变量的构造函数
+### 原型规则和实例
