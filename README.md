@@ -627,9 +627,32 @@
       console.log(a.age)//a.age=21
       引用类型是对象，数组和函数  
 #### 如何准确判断一个变量是数组类型
+     var arr=[]
+     arr instanceof Array //true
+     typeof arr //object,typeof 是无法判断是否是数组
 #### 写一个原型链继承的列子
+     function Elem(id){
+       this.elem=document.getElementById(id)
+     }
+     Elem.prototype.html=function(val){
+        var elem=this.elem;
+        if(val){
+          elem.innerHTML=val
+          return this;
+        }else{
+          return elem.innerHTML
+        }
+     }
+     Elem.prototype.on=function(type,fn){
+       var elem=this.elem;
+       elem.addEventListener(type,fn)
+     }
+     var div1=new Elem('div1')
 #### 描述new一个对象的过程
+     
 #### zepto源码中如何使用原型链
+     阅读源码是高效提高技能的方式
+     但不能“埋头苦砖”有技巧在其中
 ### 构造函数
     function Foo(name,age){
       this.name=name;
@@ -643,3 +666,98 @@
     function Foo(){}其实是var Foo=new Fuction()
     使用instanceof判断一个函数是否是一个变量的构造函数
 ### 原型规则和实例
+    所有的引用类型（数组、对象、函数），都具有对象特性，即可自由扩展属性(除了null) 
+    var obj={}; obj.a=100
+    var arr=[]; arr.a=100
+    function fn(){}
+    fn.a=100;
+    
+    所有的引用类型（数组、对象、函数），都有一个__proto__属性，属性值是一个普通的对象 
+    console.log(obj.__proto__);
+    console.log(arr.__proto__);
+    console.log(fn.__proto__);
+    所有的函数，都有一个prototype属性，属性值也是一个普通的对象
+    console.log(fn.prototype)
+    所有的引用类型（数组、对象、函数），__proto__属性值向他的构造函数的“prototype”属性值
+    console.log(obj.__proto__===Object.prototype)
+    instanceof用于判断引用类型属于哪个构造函数的方法
+### 作用域和闭包
+#### 说一下对变量提升的理解
+     变量定义
+     函数声明（注意和函数表达式的区别）
+#### 说明this几种不同的使用场景
+     作为构造函数
+     作为对象属性执行
+     作为普通函数
+     作为call apply bind
+#### 创建10个<a>标签，点击的时候弹出来对应的序号
+     
+#### 如何理解作用域
+#### 实际开发中闭包的应用
+#### 知识点
+     执行上下文
+     console.log(a)//undefined
+     var a=100;
+     fn('zhangsan')
+     function fn(name){
+       age=20;
+       console.log(name,age);//zhangsan,20
+       var age
+     }
+     范围：一段<script>或者一个函数
+     全局：变量定义、函数声明
+     函数：变量定义、函数声明、this、arguments
+     
+     this
+     this要在执行时才能确认值，定义时无法确认
+     var a={
+        name:'A',
+        fn:function(){
+          console.log(this.name)
+        }
+     }
+     a.fn();
+     a.fn.call({name:'B'})
+     var fn1=a.fn
+     fn1()
+     作为构造函数执行
+     作为对象属性执行
+     作为普通函数执行
+     作为 call，apply,bind
+     
+     作用域
+     没有块级作用域
+     if(true){
+       var name='zhangsan'
+     }
+     console.log(name)
+     只有函数和全局作用域
+     var a=100;
+     funtion fn(){
+       var a=200
+       console.log('fn',a)
+     }
+     console.log('global',a)
+     fn() 
+     
+     作用域链
+     var a=100
+     function fn(){
+        var b=200;
+        //当前作用域没有定义的变量，既“自由变量”
+        console.log(a)
+        console.log(b)
+     }
+     fn()
+     
+     闭包
+     function F1(){
+       var a=100;
+       return function(){
+         console.log(a)
+       }
+       var f1=F1()
+       var a=200;
+       f1()
+     }
+     
