@@ -691,9 +691,25 @@
      作为普通函数
      作为call apply bind
 #### 创建10个<a>标签，点击的时候弹出来对应的序号
-     
+      var i
+     for(i=0;i<10;i++){
+        (function(i){
+         conso.log(i)
+        })(i)                
+     }
 #### 如何理解作用域
+     自由变量
+     作用域链，既自由变量的查找
+     闭包的场景
 #### 实际开发中闭包的应用
+     //闭包实际应用中主要用于封装变量、收敛权限 
+     function isFirstLoad(){
+        var _list=[];
+        return function (id){
+           if(){}else{
+                        }
+        }                
+     }                   
 #### 知识点
      执行上下文
      console.log(a)//undefined
@@ -760,4 +776,82 @@
        var a=200;
        f1()
      }
+ ### 异步和同步
+ #### 同步和异步的区别是什么？分别举一个同步和异步的例子
+      同步会阻塞代码执行,而异步不会 
+ #### 一个关于setTimeout的笔试题
+      consol.log(1)
+      setTimeout(function(){console.log(2)},0)
+      console.log(3)
+      setTimeout(function(){console.log(4)},1000)
+      console.log(5)
+      1 3 5 2 4 
+ #### 前端使用异步的场景有哪些
+      定时任务：setTimeout，setInterval
+      网络请求：ajax请求，动态<img>加载
+      事件绑定 
+ #### 什么是异步（对比同步）
+ #### 异步和单线程
+      console.log(100)
+      setTimeout(function(){
+        console.log(200)
+      })
+      console.log(300)
+      执行第一行，打印100
+      执行setTimeout后，传入setTimeout的函数会被暂存起来，
+      不会立即执行（单线程的特点，不能同时干两件事）
+      执行最后一行打印300
+      执行所有程序执行完，处于空闲状态时，会立马看有没有暂存起来的要执行
+      发现暂存起来的setTimeout中的函数无需等待时间，就立即来过来执行
+ #### 何时需要异步
+      在可能发生等待的情况
+      等待过程中不能像alert一样阻塞程序运行
+ #### ajax请求代码实例
+      console.log('start')
+      $.get('./data1.json',function(data1){
+          console.log(data1)
+      })
+     console.log('end')
+ #### 事件绑定实例
+      console.log('start')
+      document.getElementById('btn1').addEventListener('click',function(){
+        alert('clicked')
+      })
+      console.log('end')
+### 其他知识
+#### 获取2017-06-10格式的日期
      
+#### 获取随机数，要求是长度一直的字符串
+     var random=Math.rando();
+     var random=random+'0000000000000'
+     var random=random.slice(0,10)
+#### 写一个能遍历对象和数组的通用forEach
+#### 日期
+     Date.now();//获取当前时间毫秒数
+     var dt=new Date();
+     dt.getTime();//获取毫秒数
+     dt.getFullYear();//年
+     dt.getMonth()//月
+     dt.getDate()//日
+     dt.getHours()//小时
+     dt.getMinutes()//分
+     dt.getSecounds()//秒      
+#### Math
+     获取随机数Math.random()
+#### 数组API
+     forEach遍历所有元素
+     every判断所有元素是否都符合条件
+     some判断是否至少一个元素符合条件
+     sort排序
+     map对元素重新组装，生成新数组
+     filter 过滤符合的元素
+#### 对象API
+     var obj={
+       x:100,
+       y:200,
+       z:300
+     }
+     var key
+     for(key in obj){
+       
+     }
