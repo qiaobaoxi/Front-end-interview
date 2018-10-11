@@ -946,7 +946,7 @@
        if(target.nodeName==='A'){
          alert(target.innerHTML)
        }
- ### ajax
+ ### ajax 
  #### 手动编写一个ajax，不依赖第三方库
  #### 跨域的几种实现方式
  #### XMLHttpRequest
@@ -959,3 +959,61 @@
            }
          }
       }
+      xhr.send(null)
+ #### readyState
+      0 未初始化
+      1 载入
+      2 载入完成
+      3 交互
+      4 解析完成
+ #### 什么是跨域
+      浏览器有同源策略，不允许ajax访问其他域名接口
+      跨域条件：协议、域名、端口、有一个不同就算跨域
+ #### JSONP
+      
+ #### 服务端设置http header
+ #### 可以跨域的三个标签
+      但是有三个标签允许跨域加载资源
+      <img src=xxx>
+      <link href=xxx>
+      <script src=xxx>
+ #### 三个标签的场景
+      <img> 用于打点统计，统计网站可能是其他域
+      <link><script>可以使用CDN,CDN的也是其他域
+      <script>可以用于JSONP
+ #### 跨域注意事项
+      所有的跨域请求都必须经过信息提供方允许
+      
+ ### 存储
+ #### cookie,sessionStorage和localStorage的区别 
+ #### cookie
+      本身用于客户端和服务端通信
+      但是它有本地存储的功能，于是就被‘借用’
+      使用document.cookie= ... 获取和修改即可
+ #### cookie用于存储的缺点
+      存储量大小，只有4kb
+      所有http请求都带着，会影响获取资源的效率
+      api简单,需要封装才能用document.cookie
+ #### sessionStorage和localStorage
+      html5专门为存储而设计，最大容量
+      apt简单易用
+      localStorage.setItem(key,value)
+      localStorage.getItem(key)
+ ### IDE
+ #### webstorm
+ #### sublime
+ #### vscode
+ #### atom
+ ### git
+ #### 常用git命令
+      git add .  
+      git checkout xxx
+      git commit -m xxx
+      git push origin master
+      git pull origin master
+      git branch
+      git checkout -b xxx/git checkout xxx
+      git merge xxx
+      
+ 
+ 
