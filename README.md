@@ -855,3 +855,107 @@
      for(key in obj){
        
      }
+### DOM操作 document object model
+#### DOM是哪种基本的数据结构
+     树
+#### DOM操作的常用API有哪些
+     获取DOM节点，以及节点的property和Attribute
+     获取父节点，获取子节点
+     新增节点，删除节点
+#### DOM节点的attr和property有何区别 
+     property只是一个js对象的属性的修改
+     attribute是对html标签的修改
+#### DOM本质
+     DOM可以理解为：浏览器吧拿到的html代码，结构化一个浏览器能识别并且js可操作的一个模型而已
+#### DOM节点操作 
+     获取DOM节点
+     
+     var div1=document.getElementById("div1");
+     var divList=document.getElementsByTagName("div")
+     var containerList=document.getElementsByClassName('cotainer')
+     var pList=docunebt.querySelectorAll('p')
+     
+     prototype 
+     
+     var pList=docunebt.querySelectorAll('p')
+     var p=pList[0];
+     p.style.width='100px'
+     p.className='p1 '
+     
+     attribute
+     
+     var pList=docunebt.querySelectorAll('p')
+     var p=pList[0];
+     p.getAttribute('data-name')
+     p.setAttribute('data-name','imooc')
+     
+### DOM结构操作
+#### 新增节点
+     var div1=document.getElementById('div1')
+     var p1=document.createElement('p')
+     p.innerHTML='tis is p1';
+     div1.appendChild(p1);
+     var p2=document.getElementById('p2');
+     div1.appendChild(p2 )
+#### 获取父元素
+     var div1=document.getElementById('div1');
+     var parent = div1.parentElement;
+#### 获取子元素
+     var child = div1.childNodes
+#### 删除节点
+     div.removeChild(child[0])
+### BOM browser object model
+#### 如何检测浏览器的类型
+     var ua=navigator.userAgent
+     var isChrome = ua.indexOf('chrome')
+#### 拆解url的各部分
+#### navigator
+     var ua=navigator.userAgent
+     var isChrome = ua.indexOf('chrome')
+     
+#### screen
+    
+#### location
+     location.href
+     location.protocal
+     location.pathname
+     location.search
+     location.hash 
+### 事件
+#### 编写一个通用的事件监听函数
+     
+#### 描述事件冒泡流程
+#### 对于一个无限下拉加载图片的页面，如何给每个图片绑定事件
+#### 通用事件绑定
+     var btn = document.getElementById('btn1');
+     btn.addEventListener('click',function (event){
+     console.log('clicked')
+     })
+     funcion bindEvent(elem,type,fn){
+       elem.addEventListener(type,fn)
+     }
+     bindEvent(a,'click',function(e){
+        e.preventDefault()
+        alert('clicked')
+     })
+#### 事件冒泡
+#### 代理  
+     var div1=document.getElementById('div');
+     duv1.addEventListener('click',function(e){
+       var target=e.target
+       if(target.nodeName==='A'){
+         alert(target.innerHTML)
+       }
+ ### ajax
+ #### 手动编写一个ajax，不依赖第三方库
+ #### 跨域的几种实现方式
+ #### XMLHttpRequest
+      var xhr=new XMLHttpRequest()
+      xhr.open('get','/api',fasle)
+      xhr.onreadystatechange=function(){
+         if(xhr.readyStatr==4){
+           if(xhr.status==200){
+             alert(xhr.responseText)
+           }
+         }
+      }
